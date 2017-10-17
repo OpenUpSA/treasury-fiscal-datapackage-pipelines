@@ -20,6 +20,77 @@ estimates-of-national-expenditure:
     -
       run: stream_remote_resources
       cache: True
+
+# Now transpose these year-phase amount columns into a year column and phase amount columns:
+#
+# Year seems to have to be an integer
+#
+# 2016 budget:
+#   2012/13 Audited outcome
+#   2013/14 Audited outcome
+#   2014/15 Adjusted appropriation
+#   2014/15 Audited outcome
+#   2015/16 Voted (Main appropriation)
+#   2015/16 Adjusted appropriation
+#   2015/16 Revised estimate
+#   2016/17 Original budget
+#   2017/18 MTEF
+#   2018/19 MTEF
+#
+# 2017 budget:
+#   2013/14 Audited outcome
+#   2014/15 Audited outcome
+#   2015/16 Adjusted appropriation
+#   2015/16 Audited outcome
+#   2016/17 Voted (Main appropriation)
+#   2016/17 Adjusted appropriation
+#   2016/17 Revised estimate
+#   2017/18 Original Budget
+#   2018/19 MTEF
+#   2019/20 MTEF
+
+    -
+      run: fiscal.model
+      parameters:
+        options:
+          'Adjusted appropriation':
+            currency: ZAR
+          'Audited outcome':
+            currency: ZAR
+          'Voted (Main appropriation)':
+            currency: ZAR
+          'Adjusted appropriation':
+            currency: ZAR
+          'Revised estimate':
+            currency: ZAR
+          'Original Budget':
+            currency: ZAR
+          'MTEF':
+        os-types:
+          'Vote No.': ''
+          'Votes': ''
+          'Department': ''
+          'Programme No.': 'activity:generic:program:code'
+          'Programme': 'activity:generic:program:label'
+          'Subprogramme No.': 'activity:generic:project:code:part'
+          'Subprogramme': 'activity:generic:project:label'
+          'Economic Level 1': ''
+          'Economic Level 2': ''
+          'Economic Level 3': ''
+          'Economic Level 4': ''
+          'Division of Revenue level 1': ''
+          'Division of Revenue level 2': ''
+          'Transfers and subsidies / Payments for financial assets detail': ''
+          'Adjusted appropriation': 'value'
+          'Audited outcome': 'value'
+          'Voted (Main appropriation)': 'value'
+          'Adjusted appropriation': 'value'
+          'Revised estimate': 'value'
+          'Original Budget': 'value'
+          'MTEF': 'value'
+          'Function group': 'value'
+          'Budget group': 'value'
+          'Programme Purpose': ''
     -
       run: dump.to_zip
       parameters:
