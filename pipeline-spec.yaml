@@ -1,0 +1,26 @@
+estimates-of-national-expenditure:
+  title: Estimates of National Expenditure of South Africa
+  description: Based on the data used to produce the tables in the ENE book and appropriation bill
+  pipeline:
+    -
+      run: add_metadata
+      parameters:
+        name: estimates-of-national-expenditure
+        title: Estimates of National Expenditure of South Africa
+        homepage: http://www.treasury.gov.za/documents/national%20budget/default.aspx
+    -
+      run: add_resource
+      parameters:
+        name: ene-2017-18
+        url: http://www.treasury.gov.za/documents/national%20budget/2017/ene/Budget%202017%20-%20ENE%20and%20Appropriation%20Pivot.xlsx
+        format: xlsx
+        headers: 1
+        sheet: 3
+      cache: True
+    -
+      run: stream_remote_resources
+      cache: True
+    -
+      run: dump.to_zip
+      parameters:
+        out-file: estimates-of-national-expenditure.zip
