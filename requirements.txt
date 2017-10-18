@@ -1,0 +1,2 @@
+datapackage-pipelines-fiscal==0.1.1
+datapackage-pipelines==1.2.3
