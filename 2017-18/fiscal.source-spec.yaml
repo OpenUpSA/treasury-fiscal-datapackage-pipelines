@@ -1,19 +1,19 @@
-title: Estimates of National Expenditure of South Africa
-dataset-name: estimates-of-national-expenditure
-resource-name: estimates-of-national-expenditure
+title: Estimates of National Expenditure of South Africa 2017-18
+dataset-name: estimates-of-national-expenditure-south-africa-2017-18
+resource-name: estimates-of-national-expenditure-south-africa-2017-18
 
 sources:
 - url: "http://www.treasury.gov.za/documents/national%20budget/2017/ene/Budget%202017%20-%20ENE%20and%20Appropriation%20Pivot.xlsx"
   headers: 1
   sheet: 3
-  name: ene-2017-18-pivot-table-xlsx
+  name: ene-2017-18
   cache: True
 
 fields:
 
 # Administrative Classification
 
-- header: Vote No.
+- header: Vote Number
   options: {}
   osType: administrative-classification:generic:level1:code
 
@@ -23,7 +23,7 @@ fields:
 
 # Activity
 
-- header: Programme No.
+- header: Programme Number
   options: {}
   osType: activity:generic:program:code
 
@@ -31,7 +31,7 @@ fields:
   options: {}
   osType: activity:generic:program:label
 
-- header: Subprogramme No.
+- header: Subprogramme Number
   options: {}
   osType: activity:generic:project:code:part
 
@@ -61,63 +61,49 @@ fields:
 
 # Date
 
-- header: YEAR
-  title: Fiscal Year
+- header: financial_year
+  title: Financial Year
   options: {}
   osType: date:fiscal-year
 
 # Phase
 
-- header: PHASE_ID
+- header: budget_phase
   title: Budget Phase
   options: {}
   osType: phase:id
-
-- header: PHASE
-  options: {}
-  osType: phase:label
 
 measures:
   currency: ZAR
   title: Amount
   mapping:
     "2013/14 Audited outcome":
-      PHASE_ID: "0"
-      PHASE: "Audited Outcome"
-      YEAR: "2013"
+      budget_phase: "Audited Outcome"
+      financial_year: "2013"
     "2014/15 Audited outcome":
-      PHASE_ID: "0"
-      PHASE: "Audited Outcome"
-      YEAR: "2014"
+      budget_phase: "Audited Outcome"
+      financial_year: "2014"
     "2015/16 Adjusted appropriation":
-      PHASE_ID: "1"
-      PHASE: "Adjusted appropriation"
-      YEAR: "2015"
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2015"
     "2015/16 Audited outcome":
-      PHASE_ID: "0"
-      PHASE: "Audited Outcome"
-      YEAR: "2015"
+      budget_phase: "Audited Outcome"
+      financial_year: "2015"
     "2016/17 Voted (Main appropriation)":
-      PHASE_ID: "2"
-      PHASE: "Voted (Main appropriation)"
-      YEAR: "2016"
+      budget_phase: "Voted (Main appropriation)"
+      financial_year: "2016"
     "2016/17 Adjusted appropriation":
-      PHASE_ID: "1"
-      PHASE: "Adjusted appropriation"
-      YEAR: "2016"
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2016"
     "2016/17 Revised estimate":
-      PHASE_ID: "3"
-      PHASE: "Revised estimate"
-      YEAR: "2016"
+      budget_phase: "Revised estimate"
+      financial_year: "2016"
     "2017/18 Original Budget":
-      PHASE_ID: "4"
-      PHASE: "Original Budget"
-      YEAR: "2017"
+      budget_phase: "Original Budget"
+      financial_year: "2017"
     "2018/19 MTEF":
-      PHASE_ID: "5"
-      PHASE: "MTEF"
-      YEAR: "2018"
+      budget_phase: "MTEF"
+      financial_year: "2018"
     "2019/20 MTEF":
-      PHASE_ID: "5"
-      PHASE: "MTEF"
-      YEAR: "2019"
+      budget_phase: "MTEF"
+      financial_year: "2019"
