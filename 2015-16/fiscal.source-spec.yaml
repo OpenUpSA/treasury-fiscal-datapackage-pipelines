@@ -62,28 +62,28 @@ fields:
 - header: economic_classification_1
   title: Economic Classification Level 1
   aliases:
-    - Economic level 1
+    - Econ class level 1
   options: {}
   osType: economic-classification:generic:level1:code
 
 - header: economic_classification_2
   title: Economic Classification Level 2
   aliases:
-    - Economic level 2
+    - Econ class level 2
   options: {}
   osType: economic-classification:generic:level2:code:part
 
 - header: economic_classification_3
   title: Economic Classification Level 3
   aliases:
-    - Economic level 3
+    - Econ class level 3
   options: {}
   osType: economic-classification:generic:level3:code:part
 
 - header: economic_classification_4
   title: Economic Classification Level 4
   aliases:
-    - Economic level 4
+    - Econ class level 4
   options: {}
   osType: economic-classification:generic:level4:code:part
 
