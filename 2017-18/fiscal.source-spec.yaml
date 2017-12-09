@@ -13,12 +13,16 @@ fields:
 
 # Administrative Classification
 
-- header: Vote No.
+- header: vote_number
+  aliases:
+    - Vote No.
   title: Vote Number
   options: {}
   osType: administrative-classification:generic:level1:code
 
 - header: department
+  aliases:
+    - Department
   title: Department
   options: {}
   osType: administrative-classification:generic:level1:label
@@ -26,21 +30,28 @@ fields:
 # Activity
 
 - header: programme_number
+  aliases:
+    - Programme No.
   title: Programme Number
   options: {}
   osType: activity:generic:program:code
 
 - header: programme
-  title: Programme
+  aliases:
+    - Programme
   options: {}
   osType: activity:generic:program:label
 
 - header: subprogramme_number
+  aliases:
+    - Subprogramme No.
   title: Subprogramme Number
   options: {}
   osType: activity:generic:project:code:part
 
 - header: subprogramme
+  aliases:
+    - Subprogramme
   title: Subprogramme
   options: {}
   osType: activity:generic:project:label
@@ -48,28 +59,39 @@ fields:
 # Economic Classification
 
 - header: economic_classification_1
-  title: Economic Level 1
+  title: Economic Classification Level 1
+  aliases:
+    - Economic Level 1
   options: {}
   osType: economic-classification:generic:level1:code
 
 - header: economic_classification_2
-  title: Economic Level 2
+  title: Economic Classification Level 2
+  aliases:
+    - Economic Level 2
   options: {}
   osType: economic-classification:generic:level2:code:part
 
 - header: economic_classification_3
-  title: Economic Level 3
+  title: Economic Classification Level 3
+  aliases:
+    - Economic Level 3
   options: {}
   osType: economic-classification:generic:level3:code:part
 
 - header: economic_classification_4
-  title: Economic Level 4
+  title: Economic Classification Level 4
+  aliases:
+    - Economic Level 4
   options: {}
   osType: economic-classification:generic:level4:code:part
 
 # Functional Classification
 
-- header: Function group
+- header: government_function
+  title: Government Function
+  aliases:
+    - Function group
   options: {}
   osType: functional-classification:generic:level1:code
 
