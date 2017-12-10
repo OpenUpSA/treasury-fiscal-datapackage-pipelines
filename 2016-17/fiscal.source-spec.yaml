@@ -1,0 +1,136 @@
+title: Estimates of National Expenditure of South Africa 2016-17
+dataset-name: estimates-of-national-expenditure-south-africa-2016-17
+resource-name: estimates-of-national-expenditure-south-africa-2016-17
+
+sources:
+- url: "http://www.treasury.gov.za/documents/national%20budget/2016/enebooklets/ENE%202016%20Expend%20data%20set.zip"
+  headers: 2
+  sheet: 3
+  format: xlsx
+  name: ene-2016-17
+
+fields:
+
+# Administrative Classification
+
+- header: vote_number
+  aliases:
+    - Vote No.
+  title: Vote Number
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:label
+
+# Activity
+
+- header: programme_number
+  aliases:
+    - Programme No.
+  title: Programme Number
+  options: {}
+  osType: activity:generic:program:code
+
+- header: programme
+  aliases:
+    - Programme
+  options: {}
+  osType: activity:generic:program:label
+
+- header: subprogramme_number
+  aliases:
+    - Subprogramme No.
+  title: Subprogramme Number
+  options: {}
+  osType: activity:generic:project:code:part
+
+- header: subprogramme
+  aliases:
+    - Subprogramme
+  title: Subprogramme
+  options: {}
+  osType: activity:generic:project:label
+
+# Economic Classification
+
+- header: economic_classification_1
+  title: Economic Classification Level 1
+  aliases:
+    - Economic level 1
+  options: {}
+  osType: economic-classification:generic:level1:code
+
+- header: economic_classification_2
+  title: Economic Classification Level 2
+  aliases:
+    - Economic level 2
+  options: {}
+  osType: economic-classification:generic:level2:code:part
+
+- header: economic_classification_3
+  title: Economic Classification Level 3
+  aliases:
+    - Economic level 3
+  options: {}
+  osType: economic-classification:generic:level3:code:part
+
+- header: economic_classification_4
+  title: Economic Classification Level 4
+  aliases:
+    - Economic level 4
+  options: {}
+  osType: economic-classification:generic:level4:code:part
+
+# Date
+
+- header: financial_year
+  title: Fiscal Year
+  options: {}
+  osType: date:fiscal-year
+
+# Phase
+
+- header: budget_phase
+  title: Budget Phase
+  options: {}
+  osType: phase:id
+
+measures:
+  currency: ZAR
+  title: Amount
+  mapping:
+    "2012/13 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2012"
+    "2013/14 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2013"
+    "2014/15 Adjusted appropriation":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2014"
+    "2014/15 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2014"
+    "2015/16 Voted (Main appropriation)":
+      budget_phase: "Voted (Main appropriation)"
+      financial_year: "2015"
+    "2015/16 Adjusted appropriation":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2015"
+    "2015/16 Revised estimate":
+      budget_phase: "Revised estimate"
+      financial_year: "2015"
+    "2016/17 Original budget":
+      budget_phase: "Original Budget"
+      financial_year: "2016"
+    "2017/18 MTEF":
+      budget_phase: "MTEF"
+      financial_year: "2017"
+    "2018/19 MTEF":
+      budget_phase: "MTEF"
+      financial_year: "2018"
