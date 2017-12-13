@@ -27,6 +27,7 @@ for sheet_name, department_name in department_sheets.items():
     economic_classifications = {}
     prev_economic_classification_level = 0
     in_economic_classification = False
+    rows = {}
     for idx, row in enumerate(ws.iter_rows(min_row=programmes_row_idx)):
         if row[1].value and row[1].font and row[1].font.color and row[1].font.color.rgb == 'FF0000FF':
             if row[1].value not in ('Direct Charges'):
@@ -50,6 +51,17 @@ for sheet_name, department_name in department_sheets.items():
 
             economic_classifications[economic_classification_level] = economic_classification
 
-            prev_economic_classification_level = economic_classification_level
-
             print(economic_classifications)
+
+            rows_key = tuple([department_name, programme_name] + [economic_classifications[k] for k in sorted(economic_classifications)])
+
+            rows[rows_key] = []
+
+            if economic_classification_level > prev_economic_classification_level:
+                del rows[prev_rows_key]
+
+            print("rows", rows)
+
+            # End
+            prev_rows_key = rows_key
+            prev_economic_classification_level = economic_classification_level
