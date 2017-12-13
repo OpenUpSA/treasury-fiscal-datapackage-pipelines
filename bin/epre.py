@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 
 
-wb = load_workbook(filename='../data/provincial/from-jonathan/2015 MTEF/EC - EPRE - 2015-16 - Final.xlsm', read_only=True, data_only=True)
+wb = load_workbook(filename='../data/provincial/from-jonathan/2015 MTEF/NW - EPRE - 2015-16 - Final.xlsm', read_only=True, data_only=True)
 ws = wb['Settings']
 
 department_sheets = {}
@@ -54,12 +54,30 @@ for sheet_name, department_name in department_sheets.items():
             print(economic_classifications)
 
             rows_key = tuple([department_name, programme_name] + [economic_classifications[k] for k in sorted(economic_classifications)])
-
             rows[rows_key] = []
 
+            # Drop subtotal that includes this row
             if economic_classification_level > prev_economic_classification_level:
                 del rows[prev_rows_key]
 
+            columns = {
+                3: 'Outcome',
+                4: 'Outcome',
+                5: 'Outcome',
+                6: 'Main appropriation',
+                7: 'Adjusted appropriation',
+                8: 'Revised estimate',
+                16: 'Budget',
+                25: 'MTEF',
+                27: 'MTEF',
+            }
+
+            for col_idx, phase in columns.items():
+                rows[rows_key].append({
+                    'phase': phase,
+                    'financial_year': ws.cell(row=7, column=col_idx).value,
+                    'amount': row[col_idx-1].value,
+                })
             print("rows", rows)
 
             # End
