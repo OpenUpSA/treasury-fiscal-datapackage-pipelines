@@ -21,10 +21,35 @@ for sheet_name, department_name in department_sheets.items():
     # skip to programmes
     for idx, row in enumerate(ws.iter_rows()):
         if row[1].value == 'PROGRAMME DETAILS':
-            programmes_row_idx = idx+1
+            programmes_row_idx = idx+2
             break
 
+    economic_classifications = {}
+    prev_economic_classification_level = 0
+    in_economic_classification = False
     for idx, row in enumerate(ws.iter_rows(min_row=programmes_row_idx)):
         if row[1].value and row[1].font and row[1].font.color and row[1].font.color.rgb == 'FF0000FF':
             if row[1].value not in ('Direct Charges'):
-                print(row[1].value)
+                programme_name = row[1].value
+                print(programme_name)
+
+        if row[1].value == 'Total':
+            in_economic_classification = True
+            continue
+        if row[1].value == 'Total economic classification':
+            in_economic_classification = False
+
+        if in_economic_classification:
+            economic_classification = row[1].value
+            economic_classification_level = int(row[1].alignment.indent)
+
+            if economic_classification_level < prev_economic_classification_level:
+                for key, value in list(economic_classifications.items()):
+                    if key > economic_classification_level:
+                        del economic_classifications[key]
+
+            economic_classifications[economic_classification_level] = economic_classification
+
+            prev_economic_classification_level = economic_classification_level
+
+            print(economic_classifications)
