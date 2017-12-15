@@ -43,6 +43,7 @@ def scrape_file(filename, province_code, budget_financial_year):
     with open(csv_filename, 'w') as csv_file:
         fieldnames = [
             'department',
+            'programme_number',
             'programme',
             'financial_year',
             'phase',
@@ -68,6 +69,7 @@ def scrape_file(filename, province_code, budget_financial_year):
             econ_classs = {}
             prev_econ_class_level = 0
             in_econ_class = False
+            programme_number = 0
             for idx, row in enumerate(ws.iter_rows(min_row=programmes_row_idx)):
                 if (row[1].value
                     and row[1].font
@@ -75,6 +77,7 @@ def scrape_file(filename, province_code, budget_financial_year):
                     and row[1].font.color.rgb == 'FF0000FF'):
                     if row[1].value not in ('Direct Charges'):
                         programme_name = row[1].value.strip()
+                        programme_number += 1
 
                 if row[1].value == 'Total':
                     in_econ_class = True
@@ -93,7 +96,7 @@ def scrape_file(filename, province_code, budget_financial_year):
 
                     econ_classs[econ_class_level] = econ_class
 
-                    rows_key = tuple([department_name, programme_name]
+                    rows_key = tuple([department_name, programme_number, programme_name]
                                      + [econ_classs[k]
                                         for k in sorted(econ_classs)])
 
@@ -136,14 +139,15 @@ def scrape_file(filename, province_code, budget_financial_year):
             for row_key, row in rows.items():
                 for year_phase in row:
                     year_phase['department'] = row_key[0]
-                    year_phase['programme'] = row_key[1]
-                    year_phase['economic_classification_1'] = row_key[2]
-                    if len(row_key) > 3:
-                        year_phase['economic_classification_2'] = row_key[3]
+                    year_phase['programme_number'] = row_key[1]
+                    year_phase['programme'] = row_key[2]
+                    year_phase['economic_classification_1'] = row_key[3]
+                    if len(row_key) > 4:
+                        year_phase['economic_classification_2'] = row_key[4]
                     else:
                         year_phase['economic_classification_2'] = None
-                    if len(row_key) > 4:
-                        year_phase['economic_classification_3'] = row_key[4]
+                    if len(row_key) > 5:
+                        year_phase['economic_classification_3'] = row_key[5]
                     else:
                         year_phase['economic_classification_3'] = None
                     writer.writerow(year_phase)
