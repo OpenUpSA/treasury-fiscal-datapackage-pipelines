@@ -1,8 +1,8 @@
 # Data Package Pipeline for South African National Budget
 
-This produces a fiscal data package of the South African National Budget directly from the data published on the treasury's website.
+This produces a [fiscal data package](https://blog.okfn.org/2016/10/20/what-is-the-open-fiscal-data-package/) of the South African National Budget directly from the data published on the treasury's website. We produce Fiscal Data Packages of Provincial budhets from data maintained and provided by National Treasury.
 
-This also automatically uploads the fiscal data package to OpenSpending.
+This also automatically uploads the fiscal data package to [OpenSpending](https://openspending.org/s/?q=south%20africa&authors=%20%3CJd@not.shown%3E).
 
 ## Installation
 
@@ -27,7 +27,7 @@ To add a new financial year, copy an existing one, updated references to the fin
 
 ### Provincial
 
-We scrape the programme-level data from the files with names like `NC - EPRE - 2017-18 - Final.xlsm` from the folders we get from Jonathan. For the above file, the folder would have a name like `2017 MTEF`. The provencance of this data is as follows:
+We scrape the programme-level data from the files with names like `NC - EPRE - 2017-18 - Final.xlsm` from the folders we get from Provincial Budget Analysis (Part of [Intergvernmental Relations](http://www.treasury.gov.za/nt/contacts.aspx)) in National Treasury. For the above file, the folder would have a name like `2017 MTEF`. The provencance of this data is as follows:
 
 1. The EPRE is the estimates that get tabled. They include actual expenditure from vulindlela and budgeted and forecast expenditure. The budget and forecast come from provincial treasuries (and other provincial departments consolidated), who submit this as spreadsheets according to templates National Treasury give them. This gets transformed into the tables published in the EPRE.
 2. The EC - EPRE - 2017-18 - Final.xlsm type-files are the EPRE data, modified to match what was actually passed in the provincial appropriation bills.
