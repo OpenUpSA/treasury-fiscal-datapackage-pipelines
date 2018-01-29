@@ -1,0 +1,134 @@
+title: Estimates of Provincial Expenditure of South Africa 2017-18
+dataset-name: estimates-of-provincial-expenditure-south-africa-2017-18
+resource-name: estimates-of-provincial-expenditure-south-africa-2017-18
+
+sources:
+  - url: "../../epre-2017-18-Eastern Cape.csv"
+    name: epre-2017-18-ec
+    constants:
+      government: Eastern Cape
+  - url: "../../epre-2017-18-Free State.csv"
+    name: epre-2017-18-fs
+    constants:
+      government: Free State
+  - url: "../../epre-2017-18-Gauteng.csv"
+    name: epre-2017-18-gt
+    constants:
+      government: Gauteng
+  - url: "../../epre-2017-18-KwaZulu-Natal.csv"
+    name: epre-2017-18-kzn
+    constants:
+      government: KwaZulu-Natal
+  - url: "../../epre-2017-18-Limpopo.csv"
+    name: epre-2017-18-lim
+    constants:
+      government: Limpopo
+  - url: "../../epre-2017-18-Mpumalanga.csv"
+    name: epre-2017-18-mpu
+    constants:
+      government: Mpumalanga
+  - url: "../../epre-2017-18-Northern Cape.csv"
+    name: epre-2017-18-nc
+    constants:
+      government: Northern Cape
+  - url: "../../epre-2017-18-North West.csv"
+    name: epre-2017-18-nw
+    constants:
+      government: North West
+  - url: "../../epre-2017-18-Western Cape.csv"
+    name: epre-2017-18-wc
+    constants:
+      government: Western Cape
+
+fields:
+
+# Geo
+
+- header: province
+  aliases:
+    - government
+  options: {}
+  osType: geo-source:target:level1:code
+  title: Province
+
+# Administrative Classification
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+# Activity
+
+- header: programme_number
+  aliases:
+    - Programme No.
+  title: Programme Number
+  options: {}
+  osType: activity:generic:program:code
+
+- header: programme
+  aliases:
+    - Programme
+  options: {}
+  osType: activity:generic:program:label
+
+# Economic Classification
+
+- header: economic_classification_1
+  title: Economic Classification Level 1
+  aliases:
+    - Econ class level 1
+  options: {}
+  osType: economic-classification:generic:level1:code
+
+- header: economic_classification_2
+  title: Economic Classification Level 2
+  aliases:
+    - Econ class level 2
+  options: {}
+  osType: economic-classification:generic:level2:code:part
+
+- header: economic_classification_3
+  title: Economic Classification Level 3
+  aliases:
+    - Econ class level 3
+  options: {}
+  osType: economic-classification:generic:level3:code:part
+
+- header: economic_classification_4
+  title: Economic Classification Level 4
+  aliases:
+    - Econ class level 4
+  options: {}
+  osType: economic-classification:generic:level4:code:part
+
+# Date
+
+- header: financial_year
+  title: Fiscal Year
+  options: {}
+  osType: date:fiscal-year
+
+# Phase
+
+- header: budget_phase
+  aliases:
+    - phase
+  options: {}
+  osType: phase:id
+
+- header: amount
+  title: Amount
+  options:
+    currency: ZAR
+  osType: value
