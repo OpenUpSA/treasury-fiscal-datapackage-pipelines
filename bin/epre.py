@@ -26,7 +26,7 @@ def fin_year_str(year):
 
 def scrape_file(filename, province_code, budget_financial_year):
     print("%s\n" % filename)
-    wb = load_workbook(filename=filename, read_only=True, data_only=True)
+    wb = load_workbook(filename=filename, data_only=True)
 
     ws = wb['Settings']
 
@@ -71,6 +71,10 @@ def scrape_file(filename, province_code, budget_financial_year):
             in_econ_class = False
             programme_number = 0
             for idx, row in enumerate(ws.iter_rows(min_row=programmes_row_idx)):
+                if ws.row_dimensions[programmes_row_idx + idx].hidden:
+                    print("hidden")
+                    continue
+
                 if (row[1].value
                     and row[1].font
                     and row[1].font.color
@@ -124,8 +128,8 @@ def scrape_file(filename, province_code, budget_financial_year):
                         year_offset, phase = col_meta
                         amount = row[col_idx-1].value
                         if amount:
-                            amount = round(amount)
-                        financial_year = fin_year_str(budget_financial_year+year_offset)
+                            amount = round(amount) * 1000
+                        financial_year = budget_financial_year+year_offset
                         rows[rows_key].append({
                             'phase': phase,
                             'financial_year': financial_year,
