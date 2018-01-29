@@ -50,6 +50,7 @@ def scrape_file(filename, province_code, budget_financial_year):
             'economic_classification_1',
             'economic_classification_2',
             'economic_classification_3',
+            'economic_classification_4',
             'amount',
         ]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -154,6 +155,10 @@ def scrape_file(filename, province_code, budget_financial_year):
                         year_phase['economic_classification_3'] = row_key[5]
                     else:
                         year_phase['economic_classification_3'] = None
+                    if len(row_key) > 6:
+                        year_phase['economic_classification_4'] = row_key[6]
+                    else:
+                        year_phase['economic_classification_4'] = None
                     writer.writerow(year_phase)
 
 
