@@ -19,31 +19,22 @@ Find the authentication token in the address bar after logging in to OpenSpendin
 GOBBLE_AUTH_TOKEN=... dpp run ./2015-16/estimates-of-national-expenditure-south-africa-2015-16
 ```
 
-## Provincial
+### Adding a financial year
 
-`<province code> - EPRE - <financial year hyphenated> - Final.xlsm` e.g. _"NC - EPRE - 2017-18 - Final.xlsm"_
+We create a file named `fiscal.source-spec.yaml` in a folder tree denoting the financial year and sphere.
 
-- Province - code in filename
-- Budget year - hyphenated in filename
-- List of department names with the sheet label (integers) with its data - sheet "Settings"
-- For each department (on their integer-indexed sheet e.g. Education on sheet "1"
-  - One-liner description of department C6 which doesn't match what's in the EPRE
-  - Table with row for each programme B9 to B28
-    - FY-4, FY-3, FY-2 Outcome
-    - FY-1 Main Appropriation, Adjusted appropriation, Revised estimate
-    - FY
-      - Indicative baseline
-      - Reprioritised baseline
-      - Revised baseline
-    - FY+1
-      - Indicative baseline
-      - Reprioritised baseline
-      - Revised baseline
-    - FY+2 Indicative baseline
-  - Department-level breakdown by economic classification 1, 2, 3
-  - For each programme
-    - name
-    - One-liner description of programme which doesn't match what's in the EPRE
-    - Table with row for each sub-programme
-      - totals by sub-programme
-    - Programme-level breakdon by economic classification 1, 2, 3
+To add a new financial year, copy an existing one, updated references to the financial year, and perhaps the source files if their location changed other than the year. Then run `dpp` as shown above.
+
+### Provincial
+
+We scrape the programme-level data from the files with names like `NC - EPRE - 2017-18 - Final.xlsm` from the folders we get from Jonathan. For the above file, the folder would have a name like `2017 MTEF`. The provencance of this data is as follows:
+
+1. The EPRE is the estimates that get tabled. They include actual expenditure from vulindlela and budgeted and forecast expenditure. The budget and forecast come from provincial treasuries (and other provincial departments consolidated), who submit this as spreadsheets according to templates National Treasury give them. This gets transformed into the tables published in the EPRE.
+2. The EC - EPRE - 2017-18 - Final.xlsm type-files are the EPRE data, modified to match what was actually passed in the provincial appropriation bills.
+
+#### Generate Provincial Fiscal Data Package
+
+1. Run `python bin/epre.py /path/to/2017 MTEF` if the budget year is 2017.
+  - This will generate an `epre-<FY>-<Province Name>.csv` file for each province in the current working directory.
+  - How this works is documented further in `epre.py`.
+2. Run `dpp` as above using the relevant provincial `fiscal.source-spec.yaml`

@@ -1,3 +1,32 @@
+"""
+`<province code> - EPRE - <financial year hyphenated> - Final.xlsm` e.g. _"NC - EPRE - 2017-18 - Final.xlsm"_
+
+- Province - code in filename
+- Budget year - hyphenated in filename
+- List of department names with the sheet label (integers) with its data - sheet "Settings"
+- For each department (on their integer-indexed sheet e.g. Education on sheet "1"
+  - One-liner description of department C6 which doesn't match what's in the EPRE
+  - Table with row for each programme B9 to B28
+    - FY-4, FY-3, FY-2 Outcome
+    - FY-1 Main Appropriation, Adjusted appropriation, Revised estimate
+    - FY
+      - Indicative baseline
+      - Reprioritised baseline
+      - Revised baseline
+    - FY+1
+      - Indicative baseline
+      - Reprioritised baseline
+      - Revised baseline
+    - FY+2 Indicative baseline
+  - Department-level breakdown by economic classification 1, 2, 3, (4 sometimes)
+  - For each programme
+    - name
+    - One-liner description of programme which doesn't match what's in the EPRE (not always available)
+    - Table with row for each sub-programme
+      - totals by sub-programme
+    - Programme-level breakdon by economic classification 1, 2, 3, (4 sometimes
+"""
+
 from openpyxl import load_workbook
 import csv
 import re
