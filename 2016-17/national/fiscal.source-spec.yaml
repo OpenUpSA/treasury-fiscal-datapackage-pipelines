@@ -47,14 +47,14 @@ fields:
     - Subprogramme No.
   title: Subprogramme Number
   options: {}
-  osType: activity:generic:project:code:part
+  osType: activity:generic:subprogram:code:part
 
 - header: subprogramme
   aliases:
     - Subprogramme
   title: Subprogramme
   options: {}
-  osType: activity:generic:project:label
+  osType: activity:generic:subprogram:label
 
 # Economic Classification
 
@@ -134,3 +134,9 @@ measures:
     "2018/19 MTEF":
       budget_phase: "MTEF"
       financial_year: "2018"
+
+deduplicate: true
+
+postprocessing:
+  - processor: sa_treasury.multiply
+    parameters: {}

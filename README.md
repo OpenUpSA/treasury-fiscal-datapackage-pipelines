@@ -16,7 +16,7 @@ pip install -r requirements.txt
 Find the authentication token in the address bar after logging in to OpenSpending
 
 ```
-GOBBLE_AUTH_TOKEN=... dpp run ./2015-16/estimates-of-national-expenditure-south-africa-2015-16
+DPP_PROCESSOR_PATH=$PWD GOBBLE_AUTH_TOKEN=... dpp run ./2015-16/national/estimates-of-national-expenditure-south-africa-2015-16
 ```
 
 ### Adding a financial year
