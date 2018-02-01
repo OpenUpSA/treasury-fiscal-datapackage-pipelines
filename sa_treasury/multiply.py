@@ -8,6 +8,8 @@ def modify_datapackage(datapackage, parameters, stats):
 def process_row(row, row_index,
                 resource_descriptor, resource_index,
                 parameters, stats):
+    if row['value'] == '':
+        row['value'] = '0'
     row['value'] = float(row['value']) * 1000
     return row
 
