@@ -136,3 +136,7 @@ measures:
       financial_year: "2017"
 
 deduplicate: true
+
+postprocessing:
+  - processor: sa_treasury.multiply
+    parameters: {}
