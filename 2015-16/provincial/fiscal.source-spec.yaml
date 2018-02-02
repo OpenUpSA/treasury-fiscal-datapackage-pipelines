@@ -127,6 +127,8 @@ fields:
 
 - header: value
   title: Value
+  aliases:
+    - amount
   options:
     currency: ZAR
   osType: value

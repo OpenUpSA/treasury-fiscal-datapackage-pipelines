@@ -126,7 +126,7 @@ fields:
   osType: phase:id
 
 - header: value
-  title: Amount
+  title: Value
   aliases:
     - amount
   options:
