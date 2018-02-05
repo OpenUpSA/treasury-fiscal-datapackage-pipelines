@@ -3,39 +3,39 @@ dataset-name: estimates-of-provincial-expenditure-south-africa-2016-17
 resource-name: estimates-of-provincial-expenditure-south-africa-2016-17
 
 sources:
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Eastern Cape.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Eastern Cape.csv"
     name: epre-2016-17-ec
     constants:
       government: Eastern Cape
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Free State.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Free State.csv"
     name: epre-2016-17-fs
     constants:
       government: Free State
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Gauteng.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Gauteng.csv"
     name: epre-2016-17-gt
     constants:
       government: Gauteng
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-KwaZulu-Natal.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-KwaZulu-Natal.csv"
     name: epre-2016-17-kzn
     constants:
       government: KwaZulu-Natal
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Limpopo.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Limpopo.csv"
     name: epre-2016-17-lim
     constants:
       government: Limpopo
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Mpumalanga.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Mpumalanga.csv"
     name: epre-2016-17-mpu
     constants:
       government: Mpumalanga
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Northern Cape.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Northern Cape.csv"
     name: epre-2016-17-nc
     constants:
       government: Northern Cape
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-North West.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-North West.csv"
     name: epre-2016-17-nw
     constants:
       government: North West
-  - url: "../../epre-scrape-2017-01-29/epre-2016-17-Western Cape.csv"
+  - url: "../../epre-scrape-2018-02-05/epre-2016-17-Western Cape.csv"
     name: epre-2016-17-wc
     constants:
       government: Western Cape
