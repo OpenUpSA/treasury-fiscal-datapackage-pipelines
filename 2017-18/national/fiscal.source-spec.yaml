@@ -151,3 +151,6 @@ postprocessing:
     parameters: {}
   - processor: sa_treasury.subprogramme_names
     parameters: {}
+  - processor: sa_treasury.department_names
+    parameters:
+      sphere: national

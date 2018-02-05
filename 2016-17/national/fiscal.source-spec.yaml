@@ -102,7 +102,7 @@ fields:
 
 measures:
   currency: ZAR
-  title: Amount
+  title: Value
   mapping:
     "2012/13 Audited outcome":
       budget_phase: "Audited Outcome"
@@ -140,3 +140,6 @@ deduplicate: true
 postprocessing:
   - processor: sa_treasury.multiply
     parameters: {}
+  - processor: sa_treasury.department_names
+    parameters:
+      sphere: national

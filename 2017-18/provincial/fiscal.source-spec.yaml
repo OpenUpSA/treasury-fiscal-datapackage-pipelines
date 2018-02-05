@@ -44,12 +44,10 @@ fields:
 
 # Geo
 
-- header: province
-  aliases:
-    - government
+- header: government
   options: {}
   osType: geo-source:target:level1:code
-  title: Province
+  title: Government
 
 # Administrative Classification
 
@@ -127,8 +125,15 @@ fields:
   options: {}
   osType: phase:id
 
-- header: amount
-  title: Amount
+- header: value
+  title: Value
+  aliases:
+    - amount
   options:
     currency: ZAR
   osType: value
+
+postprocessing:
+  - processor: sa_treasury.department_names
+    parameters:
+      sphere: provincial
