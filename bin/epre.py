@@ -118,8 +118,9 @@ def scrape_file(filename, province_code, budget_financial_year):
                     continue
                 if row[1].value == 'Total economic classification':
                     in_econ_class = False
+                    programme_name = None
 
-                if in_econ_class:
+                if in_econ_class and programme_name:
                     econ_class = row[1].value.strip()
                     econ_class_level = int(row[1].alignment.indent)
 
@@ -160,11 +161,12 @@ def scrape_file(filename, province_code, budget_financial_year):
                         if amount:
                             amount = round(amount) * 1000
                         financial_year = budget_financial_year+year_offset
-                        rows[rows_key].append({
+                        year_phase = {
                             'phase': phase,
                             'financial_year': financial_year,
                             'amount': amount,
-                        })
+                        }
+                        rows[rows_key].append(year_phase)
 
                     # End
                     prev_rows_key = rows_key
