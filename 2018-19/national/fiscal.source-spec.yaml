@@ -1,0 +1,156 @@
+title: Estimates of National Expenditure of South Africa 2018-19
+dataset-name: estimates-of-national-expenditure-south-africa-2018-19
+resource-name: estimates-of-national-expenditure-south-africa-2018-19
+
+sources:
+- url: "../../Budget 2018 - ENE and Appropriation Pivot Ver2.1.xlsx"
+  headers: 16
+  sheet: 3
+  name: ene-2018-19
+  cache: True
+
+fields:
+
+# Administrative Classification
+
+- header: vote_number
+  aliases:
+    - Vote No.
+  title: Vote Number
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:label
+
+# Activity
+
+- header: programme_number
+  aliases:
+    - Programme No.
+  title: Programme Number
+  options: {}
+  osType: activity:generic:program:code
+
+- header: programme
+  aliases:
+    - Programme
+  options: {}
+  osType: activity:generic:program:label
+
+- header: subprogramme_number
+  aliases:
+    - Subprogramme No.
+  title: Subprogramme Number
+  options: {}
+  osType: activity:generic:subprogram:code:part
+
+- header: subprogramme
+  aliases:
+    - Subprogramme
+  title: Subprogramme
+  options: {}
+  osType: activity:generic:subprogram:label
+
+# Economic Classification
+
+- header: economic_classification_1
+  title: Economic Classification Level 1
+  aliases:
+    - Economic Level 1
+  options: {}
+  osType: economic-classification:generic:level1:code
+
+- header: economic_classification_2
+  title: Economic Classification Level 2
+  aliases:
+    - Economic Level 2
+  options: {}
+  osType: economic-classification:generic:level2:code:part
+
+- header: economic_classification_3
+  title: Economic Classification Level 3
+  aliases:
+    - Economic Level 3
+  options: {}
+  osType: economic-classification:generic:level3:code:part
+
+- header: economic_classification_4
+  title: Economic Classification Level 4
+  aliases:
+    - Economic Level 4
+  options: {}
+  osType: economic-classification:generic:level4:code:part
+
+# Functional Classification
+
+- header: government_function
+  title: Government Function
+  aliases:
+    - Function group
+  options: {}
+  osType: functional-classification:generic:level1:code
+
+# Date
+
+- header: financial_year
+  title: Financial Year
+  options: {}
+  osType: date:fiscal-year
+
+# Phase
+
+- header: budget_phase
+  title: Budget Phase
+  options: {}
+  osType: phase:id
+
+measures:
+  currency: ZAR
+  title: Amount
+  mapping:
+    "2014/15 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2014"
+    "2015/16 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2015"
+    "2016/17 Adjusted appropriation":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2016"
+    "2016/17 Audited outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2016"
+    "2017/18 Voted (Main appropriation)":
+      budget_phase: "Voted (Main appropriation)"
+      financial_year: "2017"
+    "2017/18 Adjusted appropriation":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2017"
+    "2017/18 Revised estimate":
+      budget_phase: "Revised estimate"
+      financial_year: "2017"
+    "2018/19 Original Budget":
+      budget_phase: "Original Budget"
+      financial_year: "2018"
+    "2019/10 MTEF":
+      budget_phase: "MTEF"
+      financial_year: "2019"
+    "2020/21 MTEF":
+      budget_phase: "MTEF"
+      financial_year: "2020"
+
+deduplicate: true
+
+postprocessing:
+  - processor: sa_treasury.multiply
+    parameters: {}
+  - processor: sa_treasury.subprogramme_names
+    parameters: {}
+  - processor: sa_treasury.department_names
+    parameters:
+      sphere: national
