@@ -116,8 +116,8 @@ measures:
     "2014/15 Audited outcome":
       budget_phase: "Audited Outcome"
       financial_year: "2014"
-    "2015/16 Voted (Main appropriation)":
-      budget_phase: "Voted (Main appropriation)"
+    "2015/16 Voted (Main appropriation":
+      budget_phase: "Main appropriation"
       financial_year: "2015"
     "2015/16 Adjusted appropriation":
       budget_phase: "Adjusted appropriation"
@@ -126,13 +126,13 @@ measures:
       budget_phase: "Revised estimate"
       financial_year: "2015"
     "2016/17 Original budget":
-      budget_phase: "Original Budget"
+      budget_phase: "Main appropriation"
       financial_year: "2016"
     "2017/18 MTEF":
-      budget_phase: "MTEF"
+      budget_phase: "Medium Term Estimates"
       financial_year: "2017"
     "2018/19 MTEF":
-      budget_phase: "MTEF"
+      budget_phase: "Medium Term Estimates"
       financial_year: "2018"
 
 deduplicate: true
