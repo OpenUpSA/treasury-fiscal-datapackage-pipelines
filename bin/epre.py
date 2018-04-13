@@ -144,15 +144,15 @@ def scrape_file(filename, province_code, budget_financial_year):
                     rows[rows_key] = []
 
                     columns = {
-                        3: (-4, 'Outcome'),
-                        4: (-3, 'Outcome'),
-                        5: (-2, 'Outcome'),
+                        3: (-4, 'Audited Outcome'),
+                        4: (-3, 'Audited Outcome'),
+                        5: (-2, 'Audited Outcome'),
                         6: (-1, 'Main appropriation'),
                         7: (-1, 'Adjusted appropriation'),
                         8: (-1, 'Revised estimate'),
-                        16: (0, 'Budget'),
-                        25: (1, 'MTEF'),
-                        27: (2, 'MTEF'),
+                        16: (0, 'Main appropriation'),
+                        25: (1, 'Medium Term Estimates'),
+                        27: (2, 'Medium Term Estimates'),
                     }
 
                     for col_idx, col_meta in columns.items():
