@@ -1,6 +1,6 @@
 # Data Package Pipeline for South African National Budget
 
-This produces a [fiscal data package](https://blog.okfn.org/2016/10/20/what-is-the-open-fiscal-data-package/) of the South African National Budget directly from the data published on the treasury's website. We produce Fiscal Data Packages of Provincial budhets from data maintained and provided by National Treasury.
+This produces a [fiscal data package](https://blog.okfn.org/2016/10/20/what-is-the-open-fiscal-data-package/) of the South African National Budget directly from the data published on the treasury's website. We produce Fiscal Data Packages of Provincial budgets from data maintained and provided by National Treasury.
 
 This also automatically uploads the fiscal data package to [OpenSpending](https://openspending.org/s/?q=south%20africa&authors=%20%3CJd@not.shown%3E).
 
