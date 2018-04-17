@@ -3,10 +3,10 @@ dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
 resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
 
 sources:
-- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
-#- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
-  name: epre-2018-19
-  cache: True
+  - url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+  #- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
+    name: epre-2018-19
+    cache: True
 
 fields:
 
