@@ -27,7 +27,7 @@ fields:
 
   # Administrative Classification
 
-    - header: department
+  - header: department
     aliases:
       - Department
     title: Department
