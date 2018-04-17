@@ -129,9 +129,12 @@ postprocessing:
     parameters:
       homepage: 'https://vulekamali.gov.za/'
       countryCode: "ZA"
-      description: The previous financial years in this dataset have been adjusted to
-        be comparable with the departments as they are structured in the current Medium
-        Term Expenditure Framework. This means historical data for departments might
-        not reflect the structure of the department when that expenditure took place,
-        but rather as the functions are distributed among the departments at the time
-        of this budget.
+      description: This dataset includes the expenditure data as published in
+        the Estimates of Provincial Revenue and Expenditure. The previous
+        financial years in this dataset have been adjusted to be comparable
+        with the departments as they are structured in the current Medium Term
+        Expenditure Framework. This means historical data for departments might
+        not reflect the structure of the department when that expenditure took
+        place, but rather as the functions are distributed among the departments
+        at the time of this budget.
+      author: National Treasury of the Republic of South Africa
