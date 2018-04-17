@@ -3,8 +3,8 @@ dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
 resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
 
 sources:
-#- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
-- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
+- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+#- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
   name: epre-2018-19
   cache: True
 
@@ -116,15 +116,13 @@ measures:
     "2019/20 Revised Baseline":
       budget_phase: "Medium Term Estimates"
       financial_year: "2019"
-    "2020/21 Revised Baseline":
+    "2020/21 Planning Baseline":
       budget_phase: "Medium Term Estimates"
       financial_year: "2020"
 
 deduplicate: true
 
 postprocessing:
-  - processor: sa_treasury.multiply
-    parameters: {}
   - processor: add_metadata
     parameters:
       homepage: 'https://vulekamali.gov.za/'
@@ -138,3 +136,32 @@ postprocessing:
         place, but rather as the functions are distributed among the departments
         at the time of this budget.
       author: National Treasury of the Republic of South Africa
+  - processor: find_replace
+    parameters:
+      resources: estimates-of-provincial-expenditure-south-africa-2018-19
+      fields:
+        - name: department
+          patterns:
+            - find: '^\s+'
+              replace: ''
+            - find: '\s+$'
+              replace: ''
+            - find: '^\d+. '
+              replace: ''
+        - name: programme
+          patterns:
+            - find: '^\s+'
+              replace: ''
+            - find: '\s+$'
+              replace: ''
+            - find: '^\d+. '
+              replace: ''
+  - processor: filter
+    parameters:
+      resources: estimates-of-provincial-expenditure-south-africa-2018-19
+      out:
+        - department: '0'
+        - department: ''
+        - programme: '0'
+  - processor: sa_treasury.multiply
+    parameters: {}
