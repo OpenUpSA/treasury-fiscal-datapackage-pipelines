@@ -1,16 +1,10 @@
 title: Estimates of Provincial Expenditure of South Africa 2018-19
 dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
 resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
-countryCode: "ZA"
-description: The previous financial years in this dataset have been adjusted to
-  be comparable with the departments as they are structured in the current Medium
-  Term Expenditure Framework. This means historical data for departments might
-  not reflect the structure of the department when that expenditure took place,
-  but rather as the functions are distributed among the departments at the time
-  of this budget.
 
 sources:
-- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+#- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
   name: epre-2018-19
   cache: True
 
@@ -131,3 +125,13 @@ deduplicate: true
 postprocessing:
   - processor: sa_treasury.multiply
     parameters: {}
+  - processor: add_metadata
+    parameters:
+      homepage: 'https://vulekamali.gov.za/'
+      countryCode: "ZA"
+      description: The previous financial years in this dataset have been adjusted to
+        be comparable with the departments as they are structured in the current Medium
+        Term Expenditure Framework. This means historical data for departments might
+        not reflect the structure of the department when that expenditure took place,
+        but rather as the functions are distributed among the departments at the time
+        of this budget.
