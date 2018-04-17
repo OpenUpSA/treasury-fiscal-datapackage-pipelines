@@ -1,0 +1,133 @@
+title: Estimates of Provincial Expenditure of South Africa 2018-19
+dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
+resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
+countryCode: "ZA"
+description: The previous financial years in this dataset have been adjusted to
+  be comparable with the departments as they are structured in the current Medium
+  Term Expenditure Framework. This means historical data for departments might
+  not reflect the structure of the department when that expenditure took place,
+  but rather as the functions are distributed among the departments at the time
+  of this budget.
+
+sources:
+- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+  name: epre-2018-19
+  cache: True
+
+fields:
+
+  # Geo
+
+  - header: government
+    aliases:
+      - Province
+    options: {}
+    osType: geo-source:target:level1:code
+    title: Government
+
+  # Administrative Classification
+
+    - header: department
+    aliases:
+      - Department
+    title: Department
+    options: {}
+    osType: administrative-classification:generic:level1:code
+
+  # Activity
+
+  - header: programme_number
+    aliases:
+      - ProgrammeID
+    title: Programme
+    options: {}
+    osType: activity:generic:program:code
+
+  - header: programme
+    aliases:
+      - Programme
+    title: Programme Name
+    options: {}
+    osType: activity:generic:program:label
+
+  # Economic Classification
+
+  - header: economic_classification_1
+    title: Economic Classification Level 1
+    aliases:
+      - Eco Class 1
+    options: {}
+    osType: economic-classification:generic:level1:code
+
+  - header: economic_classification_2
+    title: Economic Classification Level 2
+    aliases:
+      - Eco Class 2
+    options: {}
+    osType: economic-classification:generic:level2:code:part
+
+  - header: economic_classification_3
+    title: Economic Classification Level 3
+    aliases:
+      - Eco Class 3
+    options: {}
+    osType: economic-classification:generic:level3:code:part
+
+  - header: economic_classification_4
+    title: Economic Classification Level 4
+    aliases:
+      - Eco Class 4
+    options: {}
+    osType: economic-classification:generic:level3:code:part
+
+  # Date
+
+  - header: financial_year
+    title: Financial Year
+    options: {}
+    osType: date:fiscal-year
+
+  # Phase
+
+  - header: budget_phase
+    title: Budget Phase
+    options: {}
+    osType: phase:id
+
+measures:
+  currency: ZAR
+  title: Amount
+  mapping:
+    "2014/15 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2014"
+    "2015/16 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2015"
+    "2016/17 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2016"
+    "2017/18 Main Budget":
+      budget_phase: "Main appropriation"
+      financial_year: "2017"
+    "2017/18 Adjusted Budget":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2017"
+    "2017/18 Revised Outcome":
+      budget_phase: "Revised estimate"
+      financial_year: "2017"
+    "2018/19 Revised Baseline":
+      budget_phase: "Main appropriation"
+      financial_year: "2018"
+    "2019/20 Revised Baseline":
+      budget_phase: "Medium Term Estimates"
+      financial_year: "2019"
+    "2020/21 Revised Baseline":
+      budget_phase: "Medium Term Estimates"
+      financial_year: "2020"
+
+deduplicate: true
+
+postprocessing:
+  - processor: sa_treasury.multiply
+    parameters: {}
