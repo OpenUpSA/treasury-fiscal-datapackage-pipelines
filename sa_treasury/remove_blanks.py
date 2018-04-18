@@ -12,7 +12,6 @@ import logging
 def process_row(row, row_index,
                 resource_descriptor, resource_index,
                 parameters, stats):
-    logging.info("%r", row)
     if row['department'] in ('0', '') or row['programme'] in ('0', ''):
         return
     else:
