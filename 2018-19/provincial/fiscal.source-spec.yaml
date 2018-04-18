@@ -156,12 +156,7 @@ postprocessing:
               replace: ''
             - find: '^\d+. '
               replace: ''
-  - processor: filter
-    parameters:
-      resources: estimates-of-provincial-expenditure-south-africa-2018-19
-      out:
-        - department: '0'
-        - department: ''
-        - programme: '0'
+  - processor: sa_treasury.remove_blanks
+    parameters: {}
   - processor: sa_treasury.multiply
     parameters: {}
