@@ -4,7 +4,6 @@ resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
 
 sources:
   - url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
-  #- url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final-dev-subset.csv"
     name: epre-2018-19
     cache: True
 
@@ -127,14 +126,21 @@ postprocessing:
     parameters:
       homepage: 'https://vulekamali.gov.za/'
       countryCode: "ZA"
-      description: This dataset includes the expenditure data as published in
-        the Estimates of Provincial Revenue and Expenditure. The previous
-        financial years in this dataset have been adjusted to be comparable
-        with the departments as they are structured in the current Medium Term
-        Expenditure Framework. This means historical data for departments might
-        not reflect the structure of the department when that expenditure took
-        place, but rather as the functions are distributed among the departments
-        at the time of this budget.
+      description: This dataset includes expenditure data as published in the
+        Estimates of Provincial Revenue and Expenditure. Departmental
+        expenditure data in previous financial years have been aligned with the
+        budget and programme structures of departments as they are structured in
+        the current Medium Term Expenditure Framework. This means that the
+        structure of historical expenditure data for a department, may not
+        necessarily reflect the same structure of that department when
+        expenditure was incurred during a particular financial year. This may be
+        due to functions shifts which may have occurred within a particular
+        department or a general change in a department’s budget programme
+        structures (BPS) as departments are afforded an opportunity before the
+        start of the Budget to change their BPS.This is to ensure a more
+        economical, efficient and effective delivery of public services and
+        performance by the department as a whole.
+
       author: National Treasury of the Republic of South Africa
   - processor: find_replace
     parameters:
@@ -156,6 +162,10 @@ postprocessing:
               replace: ''
             - find: '^\d+. '
               replace: ''
+        - name: government
+          patterns:
+            - find: 'Kwazulu-Natal'
+              replace: 'KwaZulu-Natal'
   - processor: sa_treasury.remove_blanks
     parameters: {}
   - processor: sa_treasury.multiply
