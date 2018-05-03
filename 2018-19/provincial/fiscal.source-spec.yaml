@@ -1,0 +1,172 @@
+title: Estimates of Provincial Expenditure of South Africa 2018-19
+dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
+resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
+
+sources:
+  - url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
+    name: epre-2018-19
+    cache: True
+
+fields:
+
+  # Geo
+
+  - header: government
+    aliases:
+      - Province
+    options: {}
+    osType: geo-source:target:level1:code
+    title: Government
+
+  # Administrative Classification
+
+  - header: department
+    aliases:
+      - Department
+    title: Department
+    options: {}
+    osType: administrative-classification:generic:level1:code
+
+  # Activity
+
+  - header: programme_number
+    aliases:
+      - ProgrammeID
+    title: Programme
+    options: {}
+    osType: activity:generic:program:code
+
+  - header: programme
+    aliases:
+      - Programme
+    title: Programme Name
+    options: {}
+    osType: activity:generic:program:label
+
+  # Economic Classification
+
+  - header: economic_classification_1
+    title: Economic Classification Level 1
+    aliases:
+      - Eco Class 1
+    options: {}
+    osType: economic-classification:generic:level1:code
+
+  - header: economic_classification_2
+    title: Economic Classification Level 2
+    aliases:
+      - Eco Class 2
+    options: {}
+    osType: economic-classification:generic:level2:code:part
+
+  - header: economic_classification_3
+    title: Economic Classification Level 3
+    aliases:
+      - Eco Class 3
+    options: {}
+    osType: economic-classification:generic:level3:code:part
+
+  - header: economic_classification_4
+    title: Economic Classification Level 4
+    aliases:
+      - Eco Class 4
+    options: {}
+    osType: economic-classification:generic:level3:code:part
+
+  # Date
+
+  - header: financial_year
+    title: Financial Year
+    options: {}
+    osType: date:fiscal-year
+
+  # Phase
+
+  - header: budget_phase
+    title: Budget Phase
+    options: {}
+    osType: phase:id
+
+measures:
+  currency: ZAR
+  title: Amount
+  mapping:
+    "2014/15 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2014"
+    "2015/16 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2015"
+    "2016/17 Outcome":
+      budget_phase: "Audited Outcome"
+      financial_year: "2016"
+    "2017/18 Main Budget":
+      budget_phase: "Main appropriation"
+      financial_year: "2017"
+    "2017/18 Adjusted Budget":
+      budget_phase: "Adjusted appropriation"
+      financial_year: "2017"
+    "2017/18 Revised Outcome":
+      budget_phase: "Revised estimate"
+      financial_year: "2017"
+    "2018/19 Revised Baseline":
+      budget_phase: "Main appropriation"
+      financial_year: "2018"
+    "2019/20 Revised Baseline":
+      budget_phase: "Medium Term Estimates"
+      financial_year: "2019"
+    "2020/21 Planning Baseline":
+      budget_phase: "Medium Term Estimates"
+      financial_year: "2020"
+
+deduplicate: true
+
+postprocessing:
+  - processor: add_metadata
+    parameters:
+      homepage: 'https://vulekamali.gov.za/'
+      countryCode: "ZA"
+      description: This dataset includes expenditure data as published in the
+        Estimates of Provincial Revenue and Expenditure. Departmental
+        expenditure data in previous financial years have been aligned with the
+        budget and programme structures of departments as they are structured in
+        the current Medium Term Expenditure Framework. This means that the
+        structure of historical expenditure data for a department, may not
+        necessarily reflect the same structure of that department when
+        expenditure was incurred during a particular financial year. This may be
+        due to functions shifts which may have occurred within a particular
+        department or a general change in a department’s budget programme
+        structures (BPS) as departments are afforded an opportunity before the
+        start of the Budget to change their BPS.This is to ensure a more
+        economical, efficient and effective delivery of public services and
+        performance by the department as a whole.
+
+      author: National Treasury of the Republic of South Africa
+  - processor: find_replace
+    parameters:
+      resources: estimates-of-provincial-expenditure-south-africa-2018-19
+      fields:
+        - name: department
+          patterns:
+            - find: '^\s+'
+              replace: ''
+            - find: '\s+$'
+              replace: ''
+            - find: '^\d+. '
+              replace: ''
+        - name: programme
+          patterns:
+            - find: '^\s+'
+              replace: ''
+            - find: '\s+$'
+              replace: ''
+            - find: '^\d+. '
+              replace: ''
+        - name: government
+          patterns:
+            - find: 'Kwazulu-Natal'
+              replace: 'KwaZulu-Natal'
+  - processor: sa_treasury.remove_blanks
+    parameters: {}
+  - processor: sa_treasury.multiply
+    parameters: {}
