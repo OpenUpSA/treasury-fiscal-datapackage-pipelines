@@ -38,3 +38,10 @@ We scrape the programme-level data from the files with names like `NC - EPRE - 2
   - This will generate an `epre-<FY>-<Province Name>.csv` file for each province in the current working directory.
   - How this works is documented further in `epre.py`.
 2. Run `dpp` as above using the relevant provincial `fiscal.source-spec.yaml`
+
+
+## Troubleshooting
+
+### tabulator.exceptions.HTTPError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+On 2018-05-03 http://treasury.gov.za started giving this error when regenerating the national data packages. Running the dpp command within a bash inifinite loop (`while :; ... dpp ...; done`) seems to have fixed it.
