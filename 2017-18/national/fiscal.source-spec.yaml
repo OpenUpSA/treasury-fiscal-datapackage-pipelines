@@ -1,12 +1,12 @@
-title: Estimates of National Expenditure of South Africa 2017-18 added 2018-05-21
-dataset-name: estimates-of-national-expenditure-south-africa-2017-18-added-2018-05-21
-resource-name: estimates-of-national-expenditure-south-africa-2017-18-added-2018-05-21
+title: Estimates of National Expenditure of South Africa 2017-18
+dataset-name: estimates-of-national-expenditure-south-africa-2017-18
+resource-name: estimates-of-national-expenditure-south-africa-2017-18
 
 sources:
 - url: "http://www.treasury.gov.za/documents/national%20budget/2017/ene/Budget%202017%20-%20ENE%20and%20Appropriation%20Pivot.xlsx"
   headers: 1
   sheet: 3
-  name: ene-2017-18-added-2018-05-21
+  name: ene-2017-18
   cache: True
 
 fields:
