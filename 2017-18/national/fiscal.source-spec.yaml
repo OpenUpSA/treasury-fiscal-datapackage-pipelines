@@ -3,7 +3,7 @@ dataset-name: estimates-of-national-expenditure-south-africa-2017-18
 resource-name: estimates-of-national-expenditure-south-africa-2017-18
 
 sources:
-- url: "http://www.treasury.gov.za/documents/national%20budget/2017/ene/Budget%202017%20-%20ENE%20and%20Appropriation%20Pivot.xlsx"
+- url: "../../Budget 2017 - ENE and Appropriation Pivot-deduplicated.xlsx"
   headers: 1
   sheet: 3
   name: ene-2017-18
@@ -162,7 +162,7 @@ postprocessing:
         due to functions shifts which may have occurred within a particular
         department or a general change in a department’s budget programme
         structures (BPS) as departments are afforded an opportunity before the
-        start of the Budget to change their BPS.This is to ensure a more
+        start of the Budget to change their BPS. This is to ensure a more
         economical, efficient and effective delivery of public services and
         performance by the department as a whole.
       author: National Treasury of the Republic of South Africa
