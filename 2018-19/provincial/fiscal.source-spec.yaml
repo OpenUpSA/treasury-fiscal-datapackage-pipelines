@@ -1,6 +1,6 @@
-title: Estimates of Provincial Expenditure of South Africa 2018-19
-dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19
-resource-name: estimates-of-provincial-expenditure-south-africa-2018-19
+title: Estimates of Provincial Expenditure of South Africa 2018-19 test
+dataset-name: estimates-of-provincial-expenditure-south-africa-2018-19-test
+resource-name: estimates-of-provincial-expenditure-south-africa-2018-19-test
 
 sources:
   - url: "../../../data/provincial/from-jonathan/2018/final/EPRE\ Pivot\ Data-final.csv"
@@ -48,26 +48,19 @@ fields:
   - header: economic_classification_1
     title: Economic Classification Level 1
     aliases:
-      - Eco Class 1
+      - Eco Class 2
     options: {}
     osType: economic-classification:generic:level1:code
 
   - header: economic_classification_2
     title: Economic Classification Level 2
     aliases:
-      - Eco Class 2
+      - Eco Class 3
     options: {}
     osType: economic-classification:generic:level2:code:part
 
   - header: economic_classification_3
     title: Economic Classification Level 3
-    aliases:
-      - Eco Class 3
-    options: {}
-    osType: economic-classification:generic:level3:code:part
-
-  - header: economic_classification_4
-    title: Economic Classification Level 4
     aliases:
       - Eco Class 4
     options: {}
