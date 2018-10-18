@@ -105,6 +105,9 @@ def scrape_file(filename, province_code, budget_financial_year):
                     print("hidden")
                     continue
 
+                ###############################################################
+                ## Figure out which section of the PROGRAMME DETAILS section we're in
+
                 if (row[1].value
                     and row[1].font
                     and row[1].font.color
@@ -113,12 +116,20 @@ def scrape_file(filename, province_code, budget_financial_year):
                         programme_name = row[1].value.strip()
                         programme_number += 1
 
+
+
                 if row[1].value == 'Total':
                     in_econ_class = True
                     continue
                 if row[1].value == 'Total economic classification':
                     in_econ_class = False
                     programme_name = None
+
+                ##==============================================================
+                ## In the Sub-programme section of a Programme
+
+                ##==============================================================
+                ## In the Economic Classification section of a Programme
 
                 if in_econ_class and programme_name:
                     econ_class = row[1].value.strip()
@@ -171,6 +182,12 @@ def scrape_file(filename, province_code, budget_financial_year):
                     # End
                     prev_rows_key = rows_key
                     prev_econ_class_level = econ_class_level
+
+            ## Done looping over PROGRAMME DETAILS rows
+            ####################################################################
+
+
+            ## Fill out Economic Classification keys and write row
 
             for row_key, row in rows.items():
                 for year_phase in row:
