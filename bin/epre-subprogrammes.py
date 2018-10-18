@@ -68,18 +68,15 @@ def scrape_file(filename, province_code, budget_financial_year):
             department_sheets[sheet_name] = department_name
             print(sheet_name, department_name)
 
-    csv_filename = 'epre-%s-%s.csv' % (fin_year_str(budget_financial_year), prov_abbrev[province_code])
+    csv_filename = 'epre-subprogrammes-%s-%s.csv' % (fin_year_str(budget_financial_year), prov_abbrev[province_code])
     with open(csv_filename, 'w') as csv_file:
         fieldnames = [
             'department',
             'programme_number',
             'programme',
+            'subprogramme',
             'financial_year',
             'phase',
-            'economic_classification_1',
-            'economic_classification_2',
-            'economic_classification_3',
-            'economic_classification_4',
             'amount',
         ]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -96,13 +93,11 @@ def scrape_file(filename, province_code, budget_financial_year):
                     programmes_row_idx = idx+2
                     break
 
-            econ_classs = {}
-            prev_econ_class_level = 0
-            in_econ_class = False
+            in_subprogs = False
             programme_number = 0
             for idx, row in enumerate(ws.iter_rows(min_row=programmes_row_idx)):
                 if ws.row_dimensions[programmes_row_idx + idx].hidden:
-                    print("hidden")
+                    print("hidden ", end='', flush=True)
                     continue
 
                 ###############################################################
@@ -116,37 +111,28 @@ def scrape_file(filename, province_code, budget_financial_year):
                         programme_name = row[1].value.strip()
                         programme_number += 1
 
-
-
-                if row[1].value == 'Total':
-                    in_econ_class = True
+                if row[1].value == "R 000's":
+                    in_subprogs = True
                     continue
-                if row[1].value == 'Total economic classification':
-                    in_econ_class = False
+                if row[1].value == 'Total':
+                    in_subprogs = False
                     programme_name = None
 
                 ##==============================================================
-                ## In the Economic Classification section of a Programme
+                ## In the Sub-programme section of a Programme
 
-                if in_econ_class and programme_name:
-                    econ_class = row[1].value.strip()
-                    econ_class_level = int(row[1].alignment.indent)
+                if in_subprogs and programme_name:
+                    subprogramme_name = row[1].value
+                    if not subprogramme_name:
+                        continue
+                    subprogramme_name = subprogramme_name.strip()
 
-                    if econ_class_level < prev_econ_class_level:
-                        for key, value in list(econ_classs.items()):
-                            if key > econ_class_level:
-                                del econ_classs[key]
-
-                    econ_classs[econ_class_level] = econ_class
-
-                    rows_key = tuple([department_name, programme_number, programme_name]
-                                     + [econ_classs[k]
-                                        for k in sorted(econ_classs)])
-
-                    # Drop subtotal that includes this row
-                    if econ_class_level > prev_econ_class_level:
-                        print("Removing ", prev_rows_key)
-                        del rows[prev_rows_key]
+                    rows_key = (
+                        department_name,
+                        programme_number,
+                        programme_name,
+                        subprogramme_name,
+                    )
 
                     print("Adding ", rows_key)
                     rows[rows_key] = []
@@ -177,34 +163,19 @@ def scrape_file(filename, province_code, budget_financial_year):
                         rows[rows_key].append(year_phase)
 
                     # End
-                    prev_rows_key = rows_key
-                    prev_econ_class_level = econ_class_level
+
 
             ## Done looping over PROGRAMME DETAILS rows
             ####################################################################
-
-
-            ## Fill out Economic Classification keys and write row
 
             for row_key, row in rows.items():
                 for year_phase in row:
                     year_phase['department'] = row_key[0]
                     year_phase['programme_number'] = row_key[1]
                     year_phase['programme'] = row_key[2]
-                    year_phase['economic_classification_1'] = row_key[3]
-                    if len(row_key) > 4:
-                        year_phase['economic_classification_2'] = row_key[4]
-                    else:
-                        year_phase['economic_classification_2'] = None
-                    if len(row_key) > 5:
-                        year_phase['economic_classification_3'] = row_key[5]
-                    else:
-                        year_phase['economic_classification_3'] = None
-                    if len(row_key) > 6:
-                        year_phase['economic_classification_4'] = row_key[6]
-                    else:
-                        year_phase['economic_classification_4'] = None
+                    year_phase['subprogramme'] = row_key[3]
                     writer.writerow(year_phase)
+            csv_file.flush()
 
 
 directory = sys.argv[1]
