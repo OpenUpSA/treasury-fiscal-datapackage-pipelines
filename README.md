@@ -34,7 +34,7 @@ We scrape the programme-level data from the files with names like `NC - EPRE - 2
 
 #### Generate Provincial Fiscal Data Package
 
-1. Run `python bin/epre.py /path/to/2017 MTEF` if the budget year is 2017.
+1. Run `python bin/epre-econ-classes.py /path/to/2017 MTEF` if the budget year is 2017.
   - This will generate an `epre-<FY>-<Province Name>.csv` file for each province in the current working directory.
-  - How this works is documented further in `epre.py`.
+  - How this works is documented further in `epre-econ-classes.py`.
 2. Run `dpp` as above using the relevant provincial `fiscal.source-spec.yaml`
