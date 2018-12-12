@@ -1,0 +1,114 @@
+title: Estimates of Provincial Expenditure of South Africa - Sub-programmes - 2017-18
+dataset-name: estimates-of-provincial-expenditure-south-africa-sub-programmes-2017-18
+resource-name: estimates-of-provincial-expenditure-south-africa-sub-programmes-2017-18
+
+sources:
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Eastern Cape.csv"
+    name: epre-2017-18-ec
+    constants:
+      government: Eastern Cape
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Free State.csv"
+    name: epre-2017-18-fs
+    constants:
+      government: Free State
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Gauteng.csv"
+    name: epre-2017-18-gt
+    constants:
+      government: Gauteng
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-KwaZulu-Natal.csv"
+    name: epre-2017-18-kzn
+    constants:
+      government: KwaZulu-Natal
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Limpopo.csv"
+    name: epre-2017-18-lim
+    constants:
+      government: Limpopo
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Mpumalanga.csv"
+    name: epre-2017-18-mpu
+    constants:
+      government: Mpumalanga
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Northern Cape.csv"
+    name: epre-2017-18-nc
+    constants:
+      government: Northern Cape
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-North West.csv"
+    name: epre-2017-18-nw
+    constants:
+      government: North West
+  - url: "../../epre-scrape-2018-10-18/epre-subprogrammes-2017-18-Western Cape.csv"
+    name: epre-2017-18-wc
+    constants:
+      government: Western Cape
+
+fields:
+
+# Geo
+
+- header: government
+  options: {}
+  osType: geo-source:target:level1:code
+  title: Government
+
+# Administrative Classification
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+- header: department
+  aliases:
+    - Department
+  title: Department
+  options: {}
+  osType: administrative-classification:generic:level1:code
+
+# Activity
+
+- header: programme_number
+  aliases:
+    - Programme No.
+  title: Programme Number
+  options: {}
+  osType: activity:generic:program:code
+
+- header: programme
+  aliases:
+    - Programme
+  options: {}
+  osType: activity:generic:program:label
+
+- header: subprogramme
+  title: Sub-programme
+  options: {}
+  osType: activity:generic:subprogram:code:part
+
+# Date
+
+- header: financial_year
+  title: Fiscal Year
+  options: {}
+  osType: date:fiscal-year
+
+# Phase
+
+- header: budget_phase
+  aliases:
+    - phase
+  options: {}
+  osType: phase:id
+
+- header: value
+  title: Value
+  aliases:
+    - amount
+  options:
+    currency: ZAR
+  osType: value
+
+postprocessing:
+  - processor: sa_treasury.department_names
+    parameters:
+      sphere: provincial

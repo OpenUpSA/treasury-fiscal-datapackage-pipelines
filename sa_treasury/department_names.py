@@ -21,11 +21,10 @@ def modify_datapackage(datapackage, parameters, stats):
     # before processing rows.
     dataset_name = datapackage['name']
     match = re.match(
-        'estimates-of-([a-z]+)-expenditure-south-africa-(\d{4}-\d{2})',
+        'estimates-of-([a-z-]+)(\d{4}-\d{2})',
         dataset_name
     )
-    sphere = match.group(1)
-    assert(sphere == parameters['sphere'])
+    sphere = parameters['sphere']
     year_slug = match.group(2)
     listing_url_path = year_slug + '/departments.yaml'
     listing_url = portal_url + listing_url_path
@@ -37,6 +36,7 @@ def modify_datapackage(datapackage, parameters, stats):
         for department in government['departments']:
             department_names[sphere][government['name']][department['slug']] \
                 = department['name']
+        logging.info(department_names)
     return datapackage
 
 
