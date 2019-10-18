@@ -60,5 +60,5 @@ unicodecsv==0.14.1
 Unidecode==0.4.21
 urllib3==1.22
 vine==1.1.4
-Werkzeug==0.13
+Werkzeug==0.15.3
 xlrd==1.1.0
