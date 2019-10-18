@@ -58,7 +58,7 @@ tabulator==1.12.2
 tellme==0.2.6
 unicodecsv==0.14.1
 Unidecode==0.4.21
-urllib3==1.22
+urllib3==1.24.2
 vine==1.1.4
 Werkzeug==0.13
 xlrd==1.1.0
