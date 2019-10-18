@@ -16,7 +16,7 @@ git+https://github.com/frictionlessdata/datapackage-pipelines.git@1f1b5c8f3b1204
 git+https://github.com/OpenUpSA/datapackage-pipelines-fiscal.git@5e476ef55a566dd53abec043eab37ab8d58320a8#egg=datapackage-pipelines-fiscal
 dataset==1.0.4
 et-xmlfile==1.0.1
-Flask==0.12.2
+Flask==1.0
 Flask-Cors==3.0.3
 Flask-Jsonpify==1.5.0
 future==0.16.0
